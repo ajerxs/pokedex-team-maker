@@ -6,7 +6,7 @@ export function fetchPokemon(pokemon) {
         .then((poke) => {
             dispatch({ type: "ADD_POKEMON", pokemon: {
                 id: poke.id,
-                name: poke.name,
+                name: poke.name.charAt(0).toUpperCase() + poke.name.slice(1),
                 img: poke["sprites"]["other"]["official-artwork"]["front_default"]
                 }
             })
