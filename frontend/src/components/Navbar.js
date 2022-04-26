@@ -6,7 +6,7 @@ const Navbar = () => {
             <h1>Pokemon</h1>
             <div className="links">
                 <Link to="/">Home</Link>
-                <Link to="/pokemon">All Pokemon</Link>
+                <Link to="/search">Search Pokemon</Link>
             </div>
         </nav>
     )

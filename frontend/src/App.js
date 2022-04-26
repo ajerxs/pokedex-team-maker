@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import PokemonSearch from './components/PokemonSearch';
+import PokemonSearch from './containers/PokemonSearch';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <div className="content">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/pokemon" component={PokemonSearch} />
+              <Route path="/search" component={PokemonSearch} />
             </Switch>
           </div>
       </div>
