@@ -1,9 +1,11 @@
+// import { store } from "../index";
+
 function pokemonReducer(state = { pokemon: [], loading: false }, action ) {
-    switch (action) {
+    switch (action.type) {
         case "START_ADDING_POKEMON":
             return {
                 ...state,
-                pokemon: [...state.pokemon],
+                pokemon: state.pokemon,
                 loading: true
             };
         case "ADD_POKEMON":

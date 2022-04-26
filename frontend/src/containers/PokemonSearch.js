@@ -18,11 +18,11 @@ class PokemonSearch extends Component {
     handleOnSubmit = event => {
         event.preventDefault();
         this.props.fetchPokemon(this.state.search);
-        // this.setState({
-        //     search: ""
-        // })
+        this.setState({
+            search: ""
+        })
         console.log(this.state.search)
-        console.log(this.state.pokemon)
+        console.log(this.props.pokemon)
     }
 
     render() {
@@ -32,7 +32,7 @@ class PokemonSearch extends Component {
                     <input type="text" placeholder="Search Pokemon" value={this.state.search} onChange={this.handleOnChange}/>
                     <input type="submit" value="Search" />
                 </form>
-                {/* <PokemonList pokemon={this.state.pokemon} /> */}
+                {/* <PokemonList pokemon={this.props.pokemon} /> */}
             </div>
         )
     }
@@ -42,9 +42,10 @@ const mapDispatchToProps = dispatch => ({
     fetchPokemon: pokemon => dispatch(fetchPokemon(pokemon))
 })
 
-const mapStateToProps = state => ({
-    pokemon: state.pokemon
-})
+const mapStateToProps = (state) => {
+    return {
+        pokemon: state.pokemon
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonSearch)
-// export default PokemonList

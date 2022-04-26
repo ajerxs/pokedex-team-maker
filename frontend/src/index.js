@@ -5,7 +5,14 @@ import App from './App';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './store';
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './reducers/rootReducer'
+import thunk from 'redux-thunk'
+// import { store } from './store';
+
+let store = createStore(rootReducer, applyMiddleware(thunk))
+
+store.subscribe(() => console.log(store.getState()))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
