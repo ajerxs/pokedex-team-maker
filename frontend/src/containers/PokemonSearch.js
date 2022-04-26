@@ -12,12 +12,11 @@ class PokemonSearch extends Component {
         this.setState({
             search: event.target.value
         })
-        console.log(this.state.search)
     }
 
     handleOnSubmit = event => {
         event.preventDefault();
-        this.props.fetchPokemon(this.state.search);
+        this.props.fetchPokemon(this.state.search.toLowerCase());
         this.setState({
             search: ""
         })

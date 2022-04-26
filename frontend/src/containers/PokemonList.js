@@ -9,7 +9,6 @@ export default class PokemonList extends Component {
         return(
             <div>
                 {pokemon}
-            {/* <p>This will be a list of pokemon eventually</p> */}
             </div>
         )
     }
