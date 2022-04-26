@@ -4,10 +4,12 @@ export function fetchPokemon(pokemon) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then(resp => resp.json)
         .then((poke) => {
+            console.log(pokemon)
             dispatch({ type: "ADD_POKEMON", pokemon: {
                 id: poke.id,
                 name: poke.name,
-                img: poke["sprites"]["other"]["official-artwork"]["front_default"]}
+                // img: poke["sprites"]["other"]["official-artwork"]["front_default"]
+            }
             })
         });
     }

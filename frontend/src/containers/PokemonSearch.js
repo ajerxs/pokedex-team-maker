@@ -1,56 +1,50 @@
 import { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchPokemon } from '../actions/pokemon'
+// import PokemonList from "./PokemonList";
 
-class PokemonList extends Component {
+class PokemonSearch extends Component {
     state = {
-        // img: "",
         search: ""
     }
-
-    // fetchPokemon = () => {
-    //     fetch('https://pokeapi.co/api/v2/pokemon/rayquaza')
-    //     .then(resp => resp.json())
-    //     .then(poke => {
-    //         this.setState({
-    //             img: poke["sprites"]["other"]["official-artwork"]["front_default"],
-    //             name: poke.name
-    //         });
-    //     })
-    // }
 
     handleOnChange = event => {
         this.setState({
             search: event.target.value
         })
+        console.log(this.state.search)
     }
 
     handleOnSubmit = event => {
         event.preventDefault();
         this.props.fetchPokemon(this.state.search);
-        this.setState({
-            search: ""
-        })
+        // this.setState({
+        //     search: ""
+        // })
+        console.log(this.state.search)
+        console.log(this.state.pokemon)
     }
 
     render() {
         return(
             <div>
-                <form>
-                    <input type="text" placeholder="Search Pokemon" onChange={this.handleOnChange}/>
+                <form onSubmit={this.handleOnSubmit}>
+                    <input type="text" placeholder="Search Pokemon" value={this.state.search} onChange={this.handleOnChange}/>
                     <input type="submit" value="Search" />
                 </form>
+                {/* <PokemonList pokemon={this.state.pokemon} /> */}
             </div>
         )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchPokemon: () => dispatch(fetchPokemon())
+    fetchPokemon: pokemon => dispatch(fetchPokemon(pokemon))
 })
 
 const mapStateToProps = state => ({
     pokemon: state.pokemon
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonList)
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonSearch)
+// export default PokemonList
