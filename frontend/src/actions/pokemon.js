@@ -1,4 +1,17 @@
 export function fetchPokemon(pokemon) {
+
+    const upcase = (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+    }
+
+    const types = (json) => {
+        if (json.length === 2) {
+            return upcase(json["0"]["type"]["name"]) + " / " + upcase(json["1"]["type"]["name"]);
+        } else {
+            return upcase(json["0"]["type"]["name"])
+        }
+    }
+
     return (dispatch) => {
         dispatch({ type: "START_ADDING_POKEMON" });
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
@@ -6,8 +19,9 @@ export function fetchPokemon(pokemon) {
         .then((poke) => {
             dispatch({ type: "ADD_POKEMON", pokemon: {
                 id: poke.id,
-                name: poke.name.charAt(0).toUpperCase() + poke.name.slice(1),
-                img: poke["sprites"]["other"]["official-artwork"]["front_default"]
+                name: upcase(poke.name),
+                img: poke["sprites"]["other"]["official-artwork"]["front_default"],
+                types: types(poke["types"])
                 }
             })
         });

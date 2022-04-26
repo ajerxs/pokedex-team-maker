@@ -6,6 +6,8 @@ export default class Pokemon extends Component {
             <div>
                 <img src={this.props.img} alt={this.props.name} />
                 <h4>{this.props.name}</h4>
+                <p>{this.props.types}</p>
+                {/* <p>{this.props.type2}</p> */}
             </div>
         )
     }
