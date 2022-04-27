@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchPokemon } from '../actions/pokemon'
+import { addPokemonToTeam, fetchPokemon } from '../actions/pokemon'
 import PokemonList from "./PokemonList";
 
 class PokemonSearch extends Component {
@@ -29,14 +29,15 @@ class PokemonSearch extends Component {
                     <input type="text" placeholder="Search Pokemon" value={this.state.search} onChange={this.handleOnChange}/>
                     <input type="submit" value="Search" />
                 </form>
-                <PokemonList pokemon={this.props.pokemon} />
+                <PokemonList pokemon={this.props.pokemon} addPokemon={this.props.addPokemonToTeam}/>
             </div>
         )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchPokemon: pokemon => dispatch(fetchPokemon(pokemon))
+    fetchPokemon: pokemon => dispatch(fetchPokemon(pokemon)),
+    addPokemonToTeam: pokemon => dispatch(addPokemonToTeam(pokemon))
 })
 
 const mapStateToProps = (state) => {

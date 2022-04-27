@@ -27,3 +27,17 @@ export function fetchPokemon(pokemon) {
         });
     }
 }
+
+export function addPokemonToTeam(pokemon) {
+    return {
+        type: "ADD_POKEMON_TO_TEAM",
+        pokemon
+    }
+}
+
+export function changeTeamName(name) {
+    return {
+        type: "CHANGE_TEAM_NAME",
+        name
+    }
+}
