@@ -20,9 +20,22 @@ export default class Team extends Component {
         })
     }
 
+    
+
     render() {
 
-        const pokemon = this.props.team.pokemon.map(poke => <li key={poke.id}>{poke.name}</li>)
+        const handleOnClick = pokemonId => {
+            this.props.deletePokemon(pokemonId)
+        }
+
+        const pokemon = this.props.team.pokemon.map(poke => {
+            return(
+                <div key={poke.id}>
+                    <li>{poke.name}</li>
+                    <button onClick={() => handleOnClick(poke.id)}>Remove</button>
+                </div>
+            )
+        })
 
         return(
             <div>

@@ -35,9 +35,20 @@ export function addPokemonToTeam(pokemon) {
     }
 }
 
+export function deletePokemonFromTeam(pokemonId) {
+    return {
+        type: "DELETE_POKEMON_FROM_TEAM",
+        pokemonId
+    }
+}
+
 export function changeTeamName(name) {
     return {
         type: "CHANGE_TEAM_NAME",
         name
     }
 }
+
+// export function deleteUnsavedTeam() {
+
+// }

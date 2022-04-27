@@ -27,15 +27,22 @@ function pokemonReducer(state = {
                     pokemon: state.team.pokemon.concat(action.pokemon)
                 }
             };
+        case "DELETE_POKEMON_FROM_TEAM":
+            return {
+                ...state,
+                team: {
+                    name: state.team.name,
+                    pokemon: state.team.pokemon.filter(poke => poke.id !== action.pokemonId)
+                }
+            }
         case "CHANGE_TEAM_NAME":
-            console.log(action.name)
             return {
                 ...state,
                 team: {
                     name: action.name,
                     pokemon: state.team.pokemon
                 }
-            }
+            };
         default:
             return state;
     }
