@@ -24,27 +24,38 @@ export default class Team extends Component {
 
     render() {
 
-        const handleOnClick = pokemonId => {
+        const handleDeletePokemon = pokemonId => {
             this.props.deletePokemon(pokemonId)
+            // NEED TO INCORPORATE UUID SO DUPLICATE POKEMON CAN BE ADDED TO TEAM
+        }
+
+        const handleDeleteTeam = team => {
+            this.props.deleteTeam(team)
+            this.setState({
+                name: ""
+            })
         }
 
         const pokemon = this.props.team.pokemon.map(poke => {
             return(
                 <div key={poke.id}>
                     <li>{poke.name}</li>
-                    <button onClick={() => handleOnClick(poke.id)}>Remove</button>
+                    <button onClick={() => handleDeletePokemon(poke.id)}>Remove</button>
                 </div>
             )
         })
 
         return(
             <div>
-                <h2>{this.state.name}</h2>
-                <form onSubmit={this.handleOnSubmit}>
-                    <input type="text" placeholder="Change Team Name" onChange={this.handleOnChange}/>
-                    <input type="submit" />
-                </form>
-                {pokemon}
+                <div>
+                    <h2>{this.state.name}</h2>
+                    <form onSubmit={this.handleOnSubmit}>
+                        <input type="text" placeholder="Change Team Name" onChange={this.handleOnChange}/>
+                        <input type="submit" />
+                    </form>
+                    {pokemon}
+                    <button onClick={() => handleDeleteTeam(this.props.team)}>Delete team</button>
+                </div>
             </div>
         )
     }

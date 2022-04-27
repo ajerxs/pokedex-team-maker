@@ -49,6 +49,9 @@ export function changeTeamName(name) {
     }
 }
 
-// export function deleteUnsavedTeam() {
-
-// }
+export function deleteUnsavedTeam(team) {
+    return {
+        type: "DELETE_UNSAVED_TEAM",
+        team
+    }
+}

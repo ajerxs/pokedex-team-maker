@@ -43,6 +43,14 @@ function pokemonReducer(state = {
                     pokemon: state.team.pokemon
                 }
             };
+        case "DELETE_UNSAVED_TEAM":
+            return {
+                ...state,
+                team: {
+                    name: "",
+                    pokemon: []
+                }
+            };
         default:
             return state;
     }
