@@ -25,6 +25,7 @@ class PokemonSearch extends Component {
     render() {
         return(
             <div>
+                <h1>Search</h1>
                 <form onSubmit={this.handleOnSubmit}>
                     <input type="text" placeholder="Search Pokemon" value={this.state.search} onChange={this.handleOnChange}/>
                     <input type="submit" value="Search" />

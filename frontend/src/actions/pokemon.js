@@ -62,3 +62,10 @@ export function savedTeam(team) {
         team
     }
 }
+
+export function deleteSavedTeam(teamId) {
+    return {
+        type: "DELETE_SAVED_TEAM",
+        teamId
+    }
+}

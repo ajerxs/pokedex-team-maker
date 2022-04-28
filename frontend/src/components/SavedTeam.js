@@ -5,7 +5,7 @@ export default class SavedTeam extends Component {
     render() {
         const pokemon = this.props.pokemon.map(poke => {
             return(
-                <div key={uuidv4()}>
+                <div key={uuidv4()} className="poke-pics">
                     <img src={poke.img} alt={poke.name}/>
                     <h4>{poke.name}</h4>
                     <p>{poke.types}</p>
@@ -14,7 +14,7 @@ export default class SavedTeam extends Component {
         })
 
         return(
-            <div>
+            <div className="pokemon">
                 <h2>{this.props.name}</h2>
                 {pokemon}
             </div>

@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
     changeTeamName: name => dispatch(changeTeamName(name)),
     deletePokemonFromTeam: pokemonId => dispatch(deletePokemonFromTeam(pokemonId)),
     deleteUnsavedTeam: team => dispatch(deleteUnsavedTeam(team)),
-    savedTeam: team => dispatch(savedTeam(team))
+    savedTeam: team => dispatch(savedTeam(team)),
 })
 
 const mapStateToProps = (state) => {

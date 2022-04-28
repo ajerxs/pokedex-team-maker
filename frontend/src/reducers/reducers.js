@@ -5,7 +5,8 @@ function pokemonReducer(state = {
         name: "New Team",
         pokemon: []
     },
-    savedTeams: []
+    savedTeams: [],
+    id: 0
     }, action ) {
     switch (action.type) {
         case "START_ADDING_POKEMON":
@@ -32,6 +33,7 @@ function pokemonReducer(state = {
             return {
                 ...state,
                 team: {
+                    id: state.team.id,
                     name: state.team.name,
                     pokemon: state.team.pokemon.filter(poke => poke.id !== action.pokemonId)
                 }
@@ -40,6 +42,7 @@ function pokemonReducer(state = {
             return {
                 ...state,
                 team: {
+                    id: state.team.id,
                     name: action.name,
                     pokemon: state.team.pokemon
                 }
@@ -53,15 +56,22 @@ function pokemonReducer(state = {
                 }
             };
         case "SAVED_TEAM":
+            action.team.id = state.id + 1
             return {
                 ...state,
                 team: {
+                    id: state.team.id,
                     name: "New Team",
                     pokemon: []
                 },
-                savedTeams: state.savedTeams.concat(action.team)
+                savedTeams: state.savedTeams.concat(action.team),
+                id: action.team.id
             }
-
+        case "DELETE_SAVED_TEAM":
+            return {
+                ...state,
+                savedTeams: state.savedTeams.filter(team => team.id !== action.teamId)
+            }
         default:
             return state;
     }

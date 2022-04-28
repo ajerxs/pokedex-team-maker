@@ -79,27 +79,6 @@ export default class Team extends Component {
         }
         this.setState({
             team_id: this.state.team_id + 1,
-            teams: this.props.savedTeams
-        })
-    }
-
-    showSavedTeams = () => {
-        this.state.teams.map(team => {
-            const pokemon = team.pokemon.map(poke => {
-                return(
-                    <div key={uuidv4()}>
-                        <img src={poke.img} alt={poke.name} />
-                        <h4>{poke.name}</h4>
-                        <p>{poke.types}</p>
-                    </div>
-                )
-            })
-            return(
-                <div key={uuidv4()}>
-                    <h2>{team.name}</h2>
-                    {pokemon}
-                </div>
-            )
         })
     }
 
@@ -131,22 +110,25 @@ export default class Team extends Component {
             )
         })
 
-        const teams = this.props.savedTeams.map(team => <SavedTeam key={uuidv4()} team={team} name={team.name} pokemon={team.pokemon} />)
+        const teams = this.props.savedTeams.map((team, index) => <SavedTeam key={uuidv4()} team={team} name={team.name} pokemon={team.pokemon} deleteTeam={this.props.deleteSavedTeam} id={index + 1}/>)
 
 
         return(
             <div>
                 <div>
+                    
                     <h2>{this.state.name}</h2>
                     <form onSubmit={this.handleOnSubmit}>
                         <input type="text" placeholder="Change Team Name" onChange={this.handleOnChange}/>
                         <input type="submit" />
                     </form>
+                    <h1>Unsaved Teams</h1>
                     {pokemon}
-                    <button onClick={() => this.save(this.props.team, this.props.savedTeams)}>Save Team</button>
+                    <button onClick={() => this.save(this.props.team)}>Save Team</button>
                     <button onClick={() => handleDeleteTeam(this.props.team)}>Delete Team</button>
                 </div>
                 <div>
+                    <h1>Saved Teams</h1>
                     {teams}
                 </div>
             </div>
