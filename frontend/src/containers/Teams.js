@@ -13,6 +13,7 @@ class Teams extends Component {
                 deletePokemon={this.props.deletePokemonFromTeam}
                 deleteTeam={this.props.deleteUnsavedTeam}
                 savedTeam={this.props.savedTeam}
+                savedTeams={this.props.savedTeams}
                 />
             </div>
         )
@@ -28,7 +29,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state) => {
     return {
-        team: state.reducers.team
+        team: state.reducers.team,
+        savedTeams: state.reducers.savedTeams
     }
 }
 

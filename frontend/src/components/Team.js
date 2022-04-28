@@ -1,10 +1,12 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from 'uuid';
+import SavedTeam from "./SavedTeam";
 
 export default class Team extends Component {
     state = {
         name: this.props.team.name,
         newName: "",
-        team_id: 1
+        team_id: 1,
     }
 
     handleOnChange = event => {
@@ -76,7 +78,28 @@ export default class Team extends Component {
             })
         }
         this.setState({
-            team_id: this.state.team_id + 1
+            team_id: this.state.team_id + 1,
+            teams: this.props.savedTeams
+        })
+    }
+
+    showSavedTeams = () => {
+        this.state.teams.map(team => {
+            const pokemon = team.pokemon.map(poke => {
+                return(
+                    <div key={uuidv4()}>
+                        <img src={poke.img} alt={poke.name} />
+                        <h4>{poke.name}</h4>
+                        <p>{poke.types}</p>
+                    </div>
+                )
+            })
+            return(
+                <div key={uuidv4()}>
+                    <h2>{team.name}</h2>
+                    {pokemon}
+                </div>
+            )
         })
     }
 
@@ -90,7 +113,6 @@ export default class Team extends Component {
 
         const handleDeletePokemon = pokemonId => {
             this.props.deletePokemon(pokemonId)
-            // NEED TO INCORPORATE UUID SO DUPLICATE POKEMON CAN BE ADDED TO TEAM
         }
 
         const handleDeleteTeam = team => {
@@ -102,12 +124,15 @@ export default class Team extends Component {
 
         const pokemon = this.props.team.pokemon.map(poke => {
             return(
-                <div key={poke.id}>
+                <div key={uuidv4()}>
                     <li>{poke.name}</li>
                     <button onClick={() => handleDeletePokemon(poke.id)}>Remove</button>
                 </div>
             )
         })
+
+        const teams = this.props.savedTeams.map(team => <SavedTeam key={uuidv4()} team={team} name={team.name} pokemon={team.pokemon} />)
+
 
         return(
             <div>
@@ -118,11 +143,11 @@ export default class Team extends Component {
                         <input type="submit" />
                     </form>
                     {pokemon}
-                    <button onClick={() => this.save(this.props.team)}>Save Team</button>
+                    <button onClick={() => this.save(this.props.team, this.props.savedTeams)}>Save Team</button>
                     <button onClick={() => handleDeleteTeam(this.props.team)}>Delete Team</button>
                 </div>
                 <div>
-
+                    {teams}
                 </div>
             </div>
         )

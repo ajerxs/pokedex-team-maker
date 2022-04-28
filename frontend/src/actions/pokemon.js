@@ -28,40 +28,6 @@ export function fetchPokemon(pokemon) {
     }
 }
 
-// export function fetchTeam() {
-    // const pokeArray = (included, id) => {
-    //     const pokemon = included.filter((pokemon) => pokemon["attributes"]["team_id"] === id);
-    //     pokemon.map((poke) => ({
-    //         id: poke["attributes"]["dex_num"],
-    //         name: poke["attributes"]["name"],
-    //         img: poke["attributes"]["img"],
-    //         types: poke["attributes"]["types"]
-    //     })
-    //     )
-    // }
-
-    // return (dispatch) => {
-    //     dispatch({ type: "START_ADDING_TEAM" });
-    //     fetch('http://localhost:3000/teams')
-    //     .then(resp => resp.json())
-    //     .then((team) => {
-    //         let i;
-    //         if (team["data"].length === 0) {
-    //             i = 0;
-    //             return i;
-    //         } else {
-    //             i = team["data"].length - 1;
-    //         }
-    //         console.log(team["included"])
-    //         console.log(team["data"][i]["id"])
-    //         dispatch({ type: "ADD_TEAM", team: {
-    //             name: team["data"][i]["attributes"]["name"],
-    //             pokemon: pokeArray(team["included"], team["data"][i]["id"])
-    //         }})
-    //     })
-    // }
-// }
-
 export function addPokemonToTeam(pokemon) {
     return {
         type: "ADD_POKEMON_TO_TEAM",
