@@ -4,7 +4,8 @@ function pokemonReducer(state = {
     team: {
         name: "New Team",
         pokemon: []
-    } 
+    },
+    savedTeams: []
     }, action ) {
     switch (action.type) {
         case "START_ADDING_POKEMON":
@@ -51,6 +52,27 @@ function pokemonReducer(state = {
                     pokemon: []
                 }
             };
+        // case "START_ADDING_TEAM":
+        //     return {
+        //         ...state,
+        //         loading: true
+        //     };
+        // case "ADD_TEAM":
+        //     return {
+        //         ...state,
+        //         savedTeams: state.savedTeams.concat(action.team),
+        //         loading: false
+        //     }
+        case "SAVED_TEAM":
+            return {
+                ...state,
+                team: {
+                    name: "New Team",
+                    pokemon: []
+                },
+                savedTeams: state.savedTeams.concat(action.team)
+            }
+
         default:
             return state;
     }

@@ -75,37 +75,15 @@ export default class Team extends Component {
                 return response.json();
             })
         }
-
-        // let formData = {
-        //     name: pokemon[0].name,
-        //     types: pokemon[0].types,
-        //     img: pokemon[0].img,
-        //     dex_num: pokemon[0].id,
-        //     team_id: this.state.team_id
-        // }
-
-        // let configObj = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify(formData)
-        // };
-
-        // fetch("http://127.0.0.1:3000/pokemons", configObj)
-        // .then(function(response){
-        //     return response.json();
-        // })
-
         this.setState({
             team_id: this.state.team_id + 1
         })
     }
 
-    save = () => {
+    save = (team) => {
         this.saveTeam();
         this.savePokemon();
+        this.props.savedTeam(team);
     }
 
     render() {
@@ -140,7 +118,7 @@ export default class Team extends Component {
                         <input type="submit" />
                     </form>
                     {pokemon}
-                    <button onClick={this.save}>Save Team</button>
+                    <button onClick={() => this.save(this.props.team)}>Save Team</button>
                     <button onClick={() => handleDeleteTeam(this.props.team)}>Delete Team</button>
                 </div>
                 <div>

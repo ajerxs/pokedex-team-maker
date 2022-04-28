@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Team from "../components/Team";
 import { connect } from 'react-redux';
-import { changeTeamName, deletePokemonFromTeam, deleteUnsavedTeam } from "../actions/pokemon";
+import { changeTeamName, deletePokemonFromTeam, deleteUnsavedTeam, savedTeam } from "../actions/pokemon";
 
 class Teams extends Component {
     render() {
@@ -12,6 +12,7 @@ class Teams extends Component {
                 changeTeamName={this.props.changeTeamName}
                 deletePokemon={this.props.deletePokemonFromTeam}
                 deleteTeam={this.props.deleteUnsavedTeam}
+                savedTeam={this.props.savedTeam}
                 />
             </div>
         )
@@ -21,7 +22,8 @@ class Teams extends Component {
 const mapDispatchToProps = dispatch => ({
     changeTeamName: name => dispatch(changeTeamName(name)),
     deletePokemonFromTeam: pokemonId => dispatch(deletePokemonFromTeam(pokemonId)),
-    deleteUnsavedTeam: team => dispatch(deleteUnsavedTeam(team))
+    deleteUnsavedTeam: team => dispatch(deleteUnsavedTeam(team)),
+    savedTeam: team => dispatch(savedTeam(team))
 })
 
 const mapStateToProps = (state) => {
