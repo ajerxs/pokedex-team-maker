@@ -9,11 +9,8 @@ class TeamsController < ApplicationController
     end
 
     def create
-        team = Team.find_by(id: params[:id])
-        options = {
-            include: [:pokemons]
-        }
-        render json: TeamsSerializer.new(couple, options)
+        team = Team.create(team_params)
+        render json: TeamSerializer.new(team)
     end
 
     def destroy
