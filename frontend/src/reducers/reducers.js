@@ -2,7 +2,7 @@ function pokemonReducer(state = {
     pokemon: [],
     loading: false,
     team: {
-        name: "",
+        name: "New Team",
         pokemon: []
     } 
     }, action ) {
