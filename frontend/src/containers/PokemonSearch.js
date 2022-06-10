@@ -8,7 +8,7 @@ class PokemonSearch extends Component {
         search: ""
     }
 
-    handleOnChange = event => {
+    handleOnChange = (event) => {
         this.setState({
             search: event.target.value
         })

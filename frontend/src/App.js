@@ -6,6 +6,7 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import PokemonSearch from './containers/PokemonSearch';
 import Teams from './containers/Teams';
+import Saved from './containers/Saved'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route path="/search" component={PokemonSearch} />
               <Route path="/teams" component={Teams}/>
+              <Route path="/saved" component={Saved} /> 
               <Route path="/about" component={About} />
             </Switch>
           </div>
